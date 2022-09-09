@@ -1,0 +1,30 @@
+.picker-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 35%;
+}
+
+label {
+    align-self: baseline;
+    margin: 0 0 .5rem;
+}
+
+.input-row {
+    display: flex;
+    align-self: baseline;
+}
+
+input[type="color"] {
+    border-radius: .2rem 0 0 .2rem;
+    padding: 0;
+    height: 2rem;
+    width: 2rem;
+}
+
+input[type="text"] {
+    border-radius: 0 .2rem .2rem 0;
+}
+
+input:active, input:focus-within, input:focus, input:focus-visible {
+    border: 3px solid rgb(0, 94, 217);
+}
