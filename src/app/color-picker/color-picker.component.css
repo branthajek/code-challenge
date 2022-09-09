@@ -23,8 +23,13 @@ input[type="color"] {
 
 input[type="text"] {
     border-radius: 0 .2rem .2rem 0;
+    border: 1px solid black;
+}
+
+input[type="color"]:active, input[type="color"]:focus-within, input[type="color"]:focus, input[type="color"]:focus-visible {
+    border: 2px solid rgb(0, 113, 184);
 }
 
 input:active, input:focus-within, input:focus, input:focus-visible {
-    border: 3px solid rgb(0, 94, 217);
+    outline-color: rgb(0, 113, 184);
 }

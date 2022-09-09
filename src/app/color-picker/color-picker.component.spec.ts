@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { ColorPickerComponent } from './color-picker.component';
 
@@ -38,16 +39,18 @@ describe('ColorPickerComponent', () => {
   });
 
   xit('should have matching text and color input values', async () => {
-    const compiled = fixture.debugElement.nativeElement;
-    let colorInput = compiled.querySelector('#colorPicker');
-    let textInput = compiled.querySelector('#textInput');
-    
-    textInput.value = '#aaaaaa'
+    let colorInput = fixture.debugElement.query(By.css('#colorPicker'));
+    let textInput = fixture.debugElement.query(By.css('#textInput'));
+
+    colorInput.nativeElement.value = '#aaaaaa';
+    colorInput.nativeElement.dispatchEvent(new Event('input'));
     
     fixture.detectChanges();
 
-    expect(colorInput.value).toBe('#aaaaaa');
-    expect(component.hexColor).toBe('#aaaaaa');
+    fixture.whenStable().then(() => {
+      expect(colorInput.nativeElement.value).toBe('#aaaaaa');
+      expect(textInput.nativeElement.value).toBe('#aaaaaa');
+    });
   });
 
   it('should correctly render the passed @Input value', () => {

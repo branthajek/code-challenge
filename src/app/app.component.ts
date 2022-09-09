@@ -16,7 +16,6 @@ const defaultFgColor = "#DD0032";
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
@@ -44,5 +43,4 @@ export class AppComponent implements OnInit {
       this.cd.markForCheck();
     })
   }
-
 }
