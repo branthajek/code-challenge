@@ -62,6 +62,18 @@ describe('ColorPickerComponent', () => {
   // })
   // class MockComponent {
   // }
+  
+  // @Component({
+  //   template: `
+  //     <ng-container [formGroup]="formGroup">
+  //       <input
+  //         [formControl]="formControl"
+  //       ></input>
+  //     </ng-container>
+  //   `,
+  // })
+  // class MockComponent {
+  // }
 
   xit('should have matching text and color input values', async () => {
     let colorInput = fixture.debugElement.query(By.css('#colorPicker'));
