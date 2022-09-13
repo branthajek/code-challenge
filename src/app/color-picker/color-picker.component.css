@@ -12,24 +12,49 @@ label {
 .input-row {
     display: flex;
     align-self: baseline;
+    align-items: center;
 }
 
-input[type="color"] {
-    border-radius: .2rem 0 0 .2rem;
-    padding: 0;
+.color-picker-container {
+    display: flex;
     height: 2rem;
     width: 2rem;
+    border-radius: .4rem 0 0 .4rem;
+    overflow: hidden;
+}
+input[type="color"] {
+    border-radius: .3rem 0 0 .3rem;
+    border: none;
+    padding: 0;
+    height: 4rem;
+    width: 4rem;
+    align-self: center;
+    margin: 0 -1rem;
 }
 
+.text-input-container {
+    display: flex;
+    height: 2rem;
+    border-radius: 0 .4rem .4rem 0;
+}
 input[type="text"] {
-    border-radius: 0 .2rem .2rem 0;
+    border-radius: 0 .3rem .3rem 0;
     border: 1px solid black;
 }
 
-input[type="color"]:active, input[type="color"]:focus-within, input[type="color"]:focus, input[type="color"]:focus-visible {
-    border: 2px solid rgb(0, 113, 184);
+input:focus-visible {
+    outline: none;
 }
 
-input:active, input:focus-within, input:focus, input:focus-visible {
-    outline-color: rgb(0, 113, 184);
+.color-picker-container:active, 
+.color-picker-container:focus-within, 
+.color-picker-container:focus, 
+.color-picker-container:focus-visible {
+    border: 2px solid rgb(0, 113, 184);
+}
+.text-input-container:active, 
+.text-input-container:focus-within, 
+.text-input-container:focus, 
+.text-input-container:focus-visible {
+    border: 2px solid rgb(0, 113, 184);
 }

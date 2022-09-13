@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -10,13 +10,15 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     useExisting: ColorPickerComponent,
     multi: true
   }],
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ColorPickerComponent implements OnInit, OnChanges, ControlValueAccessor {
+export class ColorPickerComponent implements OnChanges, ControlValueAccessor {
 
   @Input() label!: string;
   hexColor = '';
 
   onChange!: (value: string|null) => void;
+  onTouch!: (value: any) => void;
 
   constructor(private changeDetector: ChangeDetectorRef) {
   }
@@ -27,24 +29,20 @@ export class ColorPickerComponent implements OnInit, OnChanges, ControlValueAcce
   registerOnChange(fn: any) { 
     this.onChange = fn;  
   }
+  // not in use, but interface requires it
   registerOnTouched(fn: any) {
-    // this.onTouch = fn
-  }
-
-  ngOnInit(): void {
+    this.onTouch = fn
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    setTimeout(() => {
-        if (changes['label'].currentValue != changes['label'].previousValue) {
-        this.changeDetector.detectChanges();
-      }
-    }, 10);
+    if (changes['label'].currentValue != changes['label'].previousValue) {
+      this.changeDetector.detectChanges();
+    }
   }
 
   onChangeColor(event: Event) {
     const hexString = (<HTMLInputElement>event.target).value;
-    const regex = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+    const regex = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$";
 
     if (hexString.match(regex)) {
       this.onChange((<HTMLInputElement>event.target).value)
