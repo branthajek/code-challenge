@@ -10,10 +10,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     useExisting: ColorPickerComponent,
     multi: true
   }],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ColorPickerComponent implements OnChanges, ControlValueAccessor {
-
   @Input() label!: string;
   hexColor = '';
 
@@ -26,8 +25,8 @@ export class ColorPickerComponent implements OnChanges, ControlValueAccessor {
   writeValue(value: string) {
     this.hexColor = value;
   }
-  registerOnChange(fn: any) { 
-    this.onChange = fn;  
+  registerOnChange(fn: any) {
+    this.onChange = fn;
   }
   // not in use, but interface requires it
   registerOnTouched(fn: any) {

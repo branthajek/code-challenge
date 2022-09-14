@@ -2,10 +2,10 @@
     <label for="colorPicker">{{ label }}</label>
     <div class="input-row">
         <div class="color-picker-container">
-            <input type="color" id="colorPicker" (change)="onChangeColor($event)" [(ngModel)]="hexColor">
+            <input type="color" id="colorPicker" (input)="onChangeColor($event)" [(ngModel)]="hexColor">
         </div>
         <div class="text-input-container">
-            <input type="text" id="textInput" (click)="input.select()" (change)="onChangeColor($event)" [(ngModel)]="hexColor" #input>
+            <input type="text" id="textInput" (click)="input.select()" (input)="onChangeColor($event)" [(ngModel)]="hexColor" #input>
         </div>
     </div>
 </div>

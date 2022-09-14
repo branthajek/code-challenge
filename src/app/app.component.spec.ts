@@ -14,7 +14,8 @@ describe('AppComponent', () => {
         FormsModule,
         ReactiveFormsModule
       ]
-    }).compileComponents();
+    })
+    .compileComponents();
   });
 
   it('should create the app', () => {
